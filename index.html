@@ -94,145 +94,28 @@
       pointer-events: none;
     }
 
-    .site-header {
-      position: absolute;
-      z-index: 20;
-      top: 0;
-      left: 0;
-      right: 0;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 28px;
-      padding: 24px var(--pad);
-      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-    }
-
-    .brand {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      color: var(--mist);
-      text-decoration: none;
-    }
-
-    .brand-mark {
-      position: relative;
-      width: 28px;
-      height: 28px;
-      border: 1px solid var(--cyan);
-      border-radius: 50%;
-    }
-    .brand-mark::before,
-    .brand-mark::after {
-      content: "";
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      width: 36px;
-      height: 1px;
-      background: var(--cyan);
-      transform-origin: center;
-    }
-    .brand-mark::before { transform: translate(-50%, -50%) rotate(35deg); }
-    .brand-mark::after { transform: translate(-50%, -50%) rotate(-35deg); }
-
-    .brand-copy {
-      font-family: var(--display);
-      font-size: 0.84rem;
-      font-weight: 800;
-      letter-spacing: 0.13em;
-      line-height: 1.15;
-      text-transform: uppercase;
-    }
-
-    .site-nav { display: flex; gap: clamp(16px, 2.5vw, 38px); }
-    .site-nav a {
-      position: relative;
-      color: var(--mist-dim);
-      font-family: var(--mono);
-      font-size: 0.72rem;
-      letter-spacing: 0.1em;
-      text-decoration: none;
-      text-transform: uppercase;
-    }
-    .site-nav a::after {
-      content: "";
-      position: absolute;
-      right: 0;
-      bottom: -7px;
-      left: 0;
-      height: 1px;
-      background: var(--cyan);
-      transform: scaleX(0);
-      transform-origin: left;
-      transition: transform 180ms ease;
-    }
-    .site-nav a:hover { color: var(--mist); }
-    .site-nav a:hover::after { transform: scaleX(1); }
-
     .hero {
       position: relative;
-      min-height: min(920px, 100svh);
-      isolation: isolate;
-      display: grid;
-      align-items: end;
-      padding: 148px var(--pad) 70px;
+      padding: clamp(52px, 7vw, 96px) var(--pad) clamp(76px, 9vw, 126px);
       overflow: hidden;
-      background: #071019;
+      background:
+        linear-gradient(135deg, rgba(22, 139, 255, 0.08), transparent 34%),
+        var(--obsidian);
     }
 
     .hero::before {
       content: "";
       position: absolute;
-      z-index: -3;
-      inset: 0;
-      background-image: url("assets/hero-wubeiling.jpg");
-      background-position: 62% center;
-      background-size: cover;
-      filter: saturate(0.92) contrast(1.04);
-      transform: scale(1.02);
-    }
-
-    .hero::after {
-      content: "";
-      position: absolute;
-      z-index: -2;
-      inset: 0;
-      background:
-        linear-gradient(90deg, rgba(4, 12, 19, 0.98) 0%, rgba(4, 12, 19, 0.83) 38%, rgba(4, 12, 19, 0.18) 71%, rgba(4, 12, 19, 0.48) 100%),
-        linear-gradient(0deg, #071019 0%, transparent 36%);
-    }
-
-    .hero-orbit {
-      position: absolute;
-      z-index: -1;
-      top: 25%;
-      right: clamp(-220px, -10vw, -70px);
-      width: min(54vw, 720px);
-      aspect-ratio: 1;
-      border: 1px solid rgba(122, 224, 231, 0.48);
-      border-radius: 50%;
-      box-shadow: inset 0 0 80px rgba(22, 139, 255, 0.1), 0 0 70px rgba(22, 139, 255, 0.08);
-    }
-    .hero-orbit::before,
-    .hero-orbit::after {
-      content: "";
-      position: absolute;
-      inset: 12%;
-      border: 1px solid rgba(234, 243, 247, 0.23);
-      border-radius: 50%;
-    }
-    .hero-orbit::after {
-      inset: 43%;
-      background: var(--cyan);
-      border: 0;
-      box-shadow: 0 0 28px var(--cyan);
+      top: 0;
+      right: var(--pad);
+      left: var(--pad);
+      height: 1px;
+      background: linear-gradient(90deg, var(--cyan), rgba(122, 224, 231, 0.08) 54%, transparent);
     }
 
     .hero-inner {
-      width: min(880px, 78vw);
-      max-width: var(--max);
+      width: min(100%, var(--max));
+      margin: 0 auto;
     }
 
     .eyebrow {
@@ -249,21 +132,24 @@
     .eyebrow::before { content: ""; width: 42px; height: 1px; background: currentColor; }
 
     .hero h1 {
-      max-width: 900px;
+      max-width: none;
       margin: 0;
       font-family: var(--display);
-      font-size: clamp(4.1rem, 9.4vw, 9.6rem);
+      font-size: clamp(4rem, 8.4vw, 8.7rem);
       font-weight: 950;
       letter-spacing: -0.065em;
-      line-height: 0.78;
+      line-height: 0.86;
+      text-wrap: balance;
+      white-space: normal;
       text-transform: uppercase;
     }
     .hero h1 span {
-      display: block;
-      margin-left: clamp(30px, 10vw, 140px);
+      display: inline-block;
+      margin-left: 0;
       color: transparent;
       -webkit-text-stroke: 1px rgba(234, 243, 247, 0.92);
       text-stroke: 1px rgba(234, 243, 247, 0.92);
+      white-space: nowrap;
     }
 
     .hero-subtitle {
@@ -285,23 +171,25 @@
       letter-spacing: 0.04em;
     }
     .hero-meta span + span::before { content: "/"; margin-right: 24px; color: var(--blue); }
+    .hero-location { white-space: nowrap; }
 
-    .scroll-cue {
-      position: absolute;
-      right: var(--pad);
-      bottom: 54px;
-      display: grid;
-      grid-template-columns: auto 1px;
-      align-items: end;
-      gap: 14px;
-      color: var(--mist-dim);
-      font-family: var(--mono);
-      font-size: 0.66rem;
-      letter-spacing: 0.15em;
-      writing-mode: vertical-rl;
-      text-transform: uppercase;
+    .hero-video-frame {
+      position: relative;
+      width: 100%;
+      margin-top: clamp(38px, 5vw, 68px);
+      aspect-ratio: 16 / 9;
+      overflow: hidden;
+      border: 1px solid var(--line-strong);
+      background: #000;
+      box-shadow: 0 34px 80px rgba(0, 0, 0, 0.4);
     }
-    .scroll-cue::after { content: ""; width: 1px; height: 78px; background: linear-gradient(var(--cyan), transparent); }
+    .hero-video {
+      display: block;
+      width: 100%;
+      height: 100%;
+      border: 0;
+      background: #000;
+    }
 
     main { position: relative; }
 
@@ -726,12 +614,8 @@
     .reveal.is-visible { opacity: 1; transform: none; }
 
     @media (max-width: 900px) {
-      .site-nav a:nth-child(-n+2) { display: none; }
-      .hero { min-height: 820px; }
       .hero-inner { width: 100%; }
-      .hero h1 { font-size: clamp(4rem, 17vw, 7.4rem); }
-      .hero h1 span { margin-left: 9vw; }
-      .scroll-cue { display: none; }
+      .hero h1 { font-size: clamp(3.6rem, 14.5vw, 7rem); }
       .section-head { grid-template-columns: 1fr; gap: 22px; }
       .intro-grid, .finding-statement { grid-template-columns: 1fr; }
       .study-strip { grid-template-columns: 1fr 1fr; }
@@ -750,15 +634,11 @@
     }
 
     @media (max-width: 560px) {
-      .site-header { padding-top: 18px; padding-bottom: 18px; }
-      .brand-copy { font-size: 0.7rem; }
-      .site-nav a { font-size: 0.65rem; }
-      .hero { min-height: 760px; padding-top: 130px; padding-bottom: 48px; }
-      .hero::before { background-position: 69% center; }
-      .hero::after { background: linear-gradient(90deg, rgba(4, 12, 19, 0.94), rgba(4, 12, 19, 0.42)), linear-gradient(0deg, #071019 0%, transparent 50%); }
-      .hero h1 { font-size: clamp(3.55rem, 18vw, 5.5rem); }
+      .hero { padding-top: 42px; padding-bottom: 64px; }
+      .hero h1 { font-size: clamp(3.1rem, 16.5vw, 5.2rem); }
       .hero-meta { display: grid; gap: 4px; }
       .hero-meta span + span::before { content: none; }
+      .hero-video-frame { margin-top: 32px; }
       .study-strip { grid-template-columns: 1fr; }
       .study-stat { min-height: 120px; border-right: 0; border-bottom: 1px solid var(--line); }
       .study-stat:last-child { border-bottom: 0; }
@@ -784,7 +664,7 @@
     }
 
     @media (forced-colors: active) {
-      .brand-mark, .scene-nav button, .condition-card, .media-slot { border: 1px solid ButtonText; }
+      .hero-video-frame, .scene-nav button, .condition-card, .media-slot { border: 1px solid ButtonText; }
       .page-progress { background: Highlight; }
     }
   </style>
@@ -793,32 +673,26 @@
   <a class="skip-link" href="#main">跳到主要内容</a>
   <div class="page-progress" aria-hidden="true"></div>
 
-  <header class="site-header">
-    <a class="brand" href="#top" aria-label="返回页面顶部">
-      <span class="brand-mark" aria-hidden="true"></span>
-      <span class="brand-copy">Prototype<br>Archive</span>
-    </a>
-    <nav class="site-nav" aria-label="页面导航">
-      <a href="#research">Research</a>
-      <a href="#prototype">Prototype</a>
-      <a href="#scenes">Scenes</a>
-      <a href="#findings">Findings</a>
-    </nav>
-  </header>
-
   <section class="hero" id="top" aria-labelledby="page-title">
-    <div class="hero-orbit" aria-hidden="true"></div>
     <div class="hero-inner">
-      <p class="eyebrow">UbiComp Companion ’26 · Research Prototype</p>
+      <p class="eyebrow">UbiComp / ISWC 2026 · Poster</p>
       <h1 id="page-title">Mirroring <span>the Past</span></h1>
       <p class="hero-subtitle">Exploring How Ancestral Digital Self Influences History Learning</p>
       <div class="hero-meta" aria-label="论文信息">
-        <span>Gong · Sun · Wang · Hu · Zhong · Zhang · An</span>
-        <span>Shenzhen, China</span>
-        <span>2026</span>
+        <span>Duo Gong*, Fan Sun*, Yucen Wang, Yufan Hu, Wen Zhong, Wei Zhang, Pengcheng An†</span>
+        <span class="hero-location">Shenzhen, China</span>
+      </div>
+      <div class="hero-video-frame">
+        <iframe
+          class="hero-video"
+          src="https://www.youtube-nocookie.com/embed/mUbXBqEuV0Q?rel=0"
+          title="Mirroring the Past 论文整体展示视频"
+          loading="lazy"
+          referrerpolicy="strict-origin-when-cross-origin"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          allowfullscreen></iframe>
       </div>
     </div>
-    <div class="scroll-cue" aria-hidden="true">Trace the timeline</div>
   </section>
 
   <main id="main">

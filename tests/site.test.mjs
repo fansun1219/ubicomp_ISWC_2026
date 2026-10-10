@@ -14,5 +14,17 @@ assert.match(html, /aria-label="下一个生活场景"/, 'next scene control has
 assert.match(html, /prefers-reduced-motion:\s*reduce/, 'reduced motion is supported');
 assert.match(html, /pointerdown/, 'pointer drag is implemented');
 assert.match(html, /scrollBy/, 'button navigation is implemented');
+assert.doesNotMatch(html, /<header class="site-header"/, 'top navigation header is removed');
+assert.doesNotMatch(html, /<nav\b/, 'top navigation is removed');
+assert.match(html, /<video[^>]+class="hero-video"[^>]*controls[^>]*>/, 'main video has native controls');
+assert.match(html, /<source src="assets\/ubicomp\.mp4" type="video\/mp4">/, 'main video uses the supplied MP4');
 
-console.log('site structure: 11 checks passed');
+const titlePosition = html.indexOf('id="page-title"');
+const videoPosition = html.indexOf('class="hero-video"');
+assert.ok(titlePosition >= 0 && videoPosition > titlePosition, 'main video follows the paper title');
+assert.match(html, /UbiComp \/ ISWC 2026 · Poster/, 'opening label matches the conference poster wording');
+assert.match(html, /Duo Gong\*, Fan Sun\*, Yucen Wang, Yufan Hu, Wen Zhong, Wei Zhang, Pengcheng An†/, 'complete author list is shown');
+assert.match(html, /text-wrap:\s*balance/, 'desktop title uses balanced responsive wrapping');
+assert.doesNotMatch(html, /\.hero h1 span\s*\{[^}]*display:\s*block/s, 'title words are not forced onto separate lines');
+
+console.log('site structure: 20 checks passed');

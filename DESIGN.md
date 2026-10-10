@@ -17,11 +17,12 @@ Typography uses a sharp condensed display stack for English titles, a highly leg
 
 ## Layout signature
 
-A continuous vertical "time coordinate" encodes the journey from the present-day research question to the 3,000-year-old Wubeiling scenes. At the prototype section, the coordinate splits into Digital Self and Neutral Agent branches. The final scene rail behaves like a strip of recovered moving fragments.
+The opening is a direct research-film title sequence: the paper title and metadata lead immediately into the full-width main film, without global navigation or a photographic hero. Below it, a continuous vertical "time coordinate" encodes the journey from the present-day research question to the 3,000-year-old Wubeiling scenes. At the prototype section, the coordinate splits into Digital Self and Neutral Agent branches. The final scene rail behaves like a strip of recovered moving fragments.
 
 ## Interaction contract
 
 - All primary interactions use native buttons or links with hover, active, and visible focus states.
+- The main film uses YouTube's privacy-enhanced embedded player, preserves keyboard-accessible controls, and does not autoplay.
 - The scene rail supports pointer drag, touch swipe, trackpad scroll, keyboard focus, and previous/next buttons.
 - Video placeholders preserve 16:9 geometry so later media insertion causes no layout shift.
 - Reduced-motion users receive an immediate, static presentation.
@@ -35,4 +36,3 @@ A continuous vertical "time coordinate" encodes the journey from the present-day
 4. Stimuli development workflow.
 5. Wubeiling daily-life scene rail.
 6. Findings, design implications, and paper metadata.
-
