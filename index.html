@@ -83,17 +83,6 @@
     }
     .skip-link:focus { transform: translateY(0); }
 
-    .page-progress {
-      position: fixed;
-      z-index: 100;
-      inset: 0 auto auto 0;
-      width: 0;
-      height: 2px;
-      background: var(--cyan);
-      box-shadow: 0 0 16px rgba(122, 224, 231, 0.75);
-      pointer-events: none;
-    }
-
     .hero {
       position: relative;
       padding: clamp(52px, 7vw, 96px) var(--pad) clamp(76px, 9vw, 126px);
@@ -101,16 +90,6 @@
       background:
         linear-gradient(135deg, rgba(22, 139, 255, 0.08), transparent 34%),
         var(--obsidian);
-    }
-
-    .hero::before {
-      content: "";
-      position: absolute;
-      top: 0;
-      right: var(--pad);
-      left: var(--pad);
-      height: 1px;
-      background: linear-gradient(90deg, var(--cyan), rgba(122, 224, 231, 0.08) 54%, transparent);
     }
 
     .hero-inner {
@@ -153,7 +132,7 @@
     }
 
     .hero-subtitle {
-      max-width: 690px;
+      max-width: none;
       margin: 28px 0 18px;
       font-family: var(--display);
       font-size: clamp(1.15rem, 2.25vw, 2rem);
@@ -199,8 +178,6 @@
       border-top: 1px solid var(--line);
     }
 
-    .section-inner { width: min(100%, var(--max)); margin: 0 auto; }
-
     .section-head {
       display: grid;
       grid-template-columns: minmax(120px, 0.4fr) minmax(0, 1.6fr);
@@ -244,268 +221,11 @@
       text-transform: none;
     }
 
-    .intro-grid {
-      display: grid;
-      grid-template-columns: 1.05fr 0.95fr;
-      gap: clamp(48px, 8vw, 120px);
-      align-items: end;
-    }
-
-    .research-question {
-      margin: 0;
-      font-family: var(--display);
-      font-size: clamp(2.15rem, 4.4vw, 4.75rem);
-      font-weight: 760;
-      letter-spacing: -0.04em;
-      line-height: 1.03;
-    }
-    .research-question em { color: var(--cyan); font-style: normal; }
-
-    .definition {
-      position: relative;
-      padding: 30px 0 0 34px;
-      color: var(--mist-dim);
-      font-size: clamp(1rem, 1.3vw, 1.16rem);
-      border-left: 1px solid var(--line-strong);
-    }
-    .definition strong { color: var(--mist); }
-    .definition::before {
-      content: "DEFINITION / 01";
-      position: absolute;
-      top: 0;
-      left: 34px;
-      color: var(--blue-bright);
-      font-family: var(--mono);
-      font-size: 0.68rem;
-      letter-spacing: 0.12em;
-    }
-
-    .study-strip {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      margin-top: clamp(60px, 8vw, 110px);
-      border-top: 1px solid var(--line);
-      border-bottom: 1px solid var(--line);
-    }
-    .study-stat { min-height: 156px; padding: 27px 24px; border-right: 1px solid var(--line); }
-    .study-stat:last-child { border-right: 0; }
-    .study-stat b {
-      display: block;
-      margin-bottom: 12px;
-      color: var(--mist);
-      font-family: var(--display);
-      font-size: clamp(1.8rem, 3vw, 3.5rem);
-      font-weight: 900;
-      letter-spacing: -0.045em;
-      line-height: 1;
-    }
-    .study-stat span { color: var(--mist-dim); font-size: 0.84rem; }
-
-    .prototype-section {
-      overflow: hidden;
-      background:
-        linear-gradient(115deg, rgba(22, 139, 255, 0.08), transparent 42%),
-        var(--obsidian-soft);
-    }
-
-    .timeline-split {
-      position: absolute;
-      z-index: 0;
-      top: 260px;
-      left: 50%;
-      width: 65%;
-      height: 180px;
-      border-top: 1px solid rgba(122, 224, 231, 0.25);
-      border-right: 1px solid rgba(122, 224, 231, 0.25);
-      border-left: 1px solid rgba(122, 224, 231, 0.25);
-      transform: translateX(-50%);
-      pointer-events: none;
-    }
-
-    .prototype-grid {
-      position: relative;
-      z-index: 1;
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: clamp(14px, 2.8vw, 42px);
-    }
-
-    .condition-card {
-      position: relative;
-      min-width: 0;
-      border: 1px solid var(--line);
-      background: rgba(5, 15, 24, 0.72);
-      transition: border-color 220ms ease, transform 220ms ease;
-    }
-    .condition-card:hover { border-color: var(--line-strong); transform: translateY(-4px); }
-
-    .condition-media {
-      position: relative;
-      aspect-ratio: 16 / 10;
-      overflow: hidden;
-      background: #0a263b;
-    }
-    .condition-media::before {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background-image: linear-gradient(0deg, #06111a 0%, transparent 54%), url("assets/prototype-background.jpg");
-      background-position: center;
-      background-size: cover;
-      filter: saturate(0.8) brightness(0.78);
-      transform: scale(1.04);
-    }
-    .condition-card[data-condition="self"] .condition-media::after {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(110deg, rgba(22, 139, 255, 0.28), transparent 50%);
-      mix-blend-mode: screen;
-    }
-
-    .agent-image {
-      position: absolute;
-      z-index: 2;
-      right: -4%;
-      bottom: -10%;
-      width: 70%;
-      height: 112%;
-      object-fit: contain;
-      object-position: right bottom;
-      filter: drop-shadow(-16px 8px 18px rgba(0, 0, 0, 0.45));
-    }
-    .condition-card[data-condition="neutral"] .agent-image { right: 2%; width: 58%; height: 106%; }
-
-    .media-slot {
-      position: absolute;
-      z-index: 3;
-      top: 18px;
-      left: 18px;
-      display: inline-flex;
-      align-items: center;
-      gap: 9px;
-      padding: 7px 10px;
-      border: 1px solid rgba(234, 243, 247, 0.34);
-      background: rgba(4, 12, 19, 0.72);
-      backdrop-filter: blur(8px);
-      color: var(--mist);
-      font-family: var(--mono);
-      font-size: 0.64rem;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-    }
-    .media-slot::before { content: ""; width: 6px; height: 6px; background: var(--clay); border-radius: 50%; }
-
-    .scan-line {
-      position: absolute;
-      z-index: 4;
-      right: 0;
-      bottom: 0;
-      left: 0;
-      height: 1px;
-      background: linear-gradient(90deg, transparent, var(--cyan), transparent);
-      opacity: 0.8;
-    }
-
-    .condition-copy { padding: clamp(24px, 4vw, 44px); }
-    .condition-kicker { color: var(--blue-bright); font-family: var(--mono); font-size: 0.68rem; letter-spacing: 0.13em; }
-    .condition-copy h3 {
-      margin: 12px 0 14px;
-      font-family: var(--display);
-      font-size: clamp(2rem, 4vw, 4.1rem);
-      font-weight: 900;
-      letter-spacing: -0.045em;
-      line-height: 0.95;
-      text-transform: uppercase;
-    }
-    .condition-copy p { max-width: 520px; margin: 0; color: var(--mist-dim); }
-
-    .condition-tags { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 25px; }
-    .condition-tags span {
-      padding: 6px 9px;
-      border: 1px solid var(--line);
-      color: var(--mist-dim);
-      font-family: var(--mono);
-      font-size: 0.63rem;
-      letter-spacing: 0.06em;
-      text-transform: uppercase;
-    }
-
-    .shared-pipeline {
-      display: grid;
-      grid-template-columns: auto 1fr;
-      gap: 22px;
-      align-items: center;
-      margin-top: 36px;
-      padding: 20px 24px;
-      border: 1px solid var(--line);
-      color: var(--mist-dim);
-      background: rgba(7, 16, 25, 0.74);
-    }
-    .shared-pipeline b { color: var(--cyan); font-family: var(--mono); font-size: 0.68rem; letter-spacing: 0.1em; text-transform: uppercase; }
-
-    .workflow {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      border-top: 1px solid var(--line);
-      border-bottom: 1px solid var(--line);
-    }
-    .workflow-step {
-      position: relative;
-      min-height: 300px;
-      padding: 34px clamp(22px, 3vw, 42px);
-      border-right: 1px solid var(--line);
-    }
-    .workflow-step:last-child { border-right: 0; }
-    .workflow-step::after {
-      content: "";
-      position: absolute;
-      top: 52px;
-      right: -6px;
-      z-index: 2;
-      width: 11px;
-      height: 11px;
-      border-top: 1px solid var(--cyan);
-      border-right: 1px solid var(--cyan);
-      transform: rotate(45deg);
-      background: var(--obsidian);
-    }
-    .workflow-step:last-child::after { display: none; }
-    .workflow-no { color: var(--blue-bright); font-family: var(--mono); font-size: 0.68rem; letter-spacing: 0.14em; }
-    .workflow-step h3 { margin: 56px 0 18px; font-family: var(--display); font-size: clamp(1.65rem, 2.5vw, 2.8rem); line-height: 0.98; text-transform: uppercase; }
-    .workflow-step p { margin: 0; color: var(--mist-dim); font-size: 0.93rem; }
-
     .scene-section { padding-right: 0; padding-left: 0; background: #06111a; overflow: hidden; }
     .scene-section .section-head { padding-inline: var(--pad); }
-
-    .scene-tools {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 28px;
-      width: min(calc(100% - 2 * var(--pad)), var(--max));
-      margin: 0 auto 28px;
-    }
-    .drag-hint { display: flex; align-items: center; gap: 12px; color: var(--mist-dim); font-family: var(--mono); font-size: 0.68rem; letter-spacing: 0.08em; text-transform: uppercase; }
-    .drag-hint::before { content: "↔"; color: var(--cyan); font-size: 1.1rem; }
-
-    .scene-nav { display: flex; align-items: center; gap: 10px; }
-    .scene-index { min-width: 68px; color: var(--mist-dim); font-family: var(--mono); font-size: 0.72rem; text-align: center; }
-    .scene-nav button {
-      display: grid;
-      width: 46px;
-      height: 46px;
-      place-items: center;
-      padding: 0;
-      border: 1px solid var(--line-strong);
-      border-radius: 50%;
-      background: transparent;
-      cursor: pointer;
-      transition: color 160ms ease, background 160ms ease, border-color 160ms ease, transform 160ms ease;
-    }
-    .scene-nav button:hover:not(:disabled) { color: #04101a; border-color: var(--cyan); background: var(--cyan); }
-    .scene-nav button:active:not(:disabled) { transform: scale(0.92); }
-    .scene-nav button:disabled { color: rgba(169, 189, 200, 0.35); border-color: rgba(169, 189, 200, 0.12); cursor: not-allowed; }
+    .scene-section .section-title { max-width: none; font-size: clamp(2.7rem, 5.4vw, 5.75rem); }
+    .scene-title-main { display: block; white-space: nowrap; }
+    .scene-title-phrase, .scene-title-last { white-space: nowrap; }
 
     .scene-rail {
       display: flex;
@@ -536,55 +256,23 @@
       overflow: hidden;
       background: var(--night);
     }
-    .scene-image img { width: 100%; height: 100%; object-fit: cover; pointer-events: none; transition: transform 600ms cubic-bezier(.2,.7,.2,1), filter 300ms ease; }
-    .scene-card:hover .scene-image img { transform: scale(1.035); filter: saturate(1.08); }
+    .scene-image video { display: block; width: 100%; height: 100%; object-fit: cover; pointer-events: none; transition: transform 600ms cubic-bezier(.2,.7,.2,1), filter 300ms ease; }
+    .scene-card:hover .scene-image video { transform: scale(1.035); filter: saturate(1.08); }
     .scene-image::after { content: ""; position: absolute; inset: 0; background: linear-gradient(0deg, rgba(4, 12, 19, 0.9), transparent 55%); pointer-events: none; }
-    .scene-image .media-slot { top: auto; right: 16px; bottom: 16px; left: auto; }
 
     .scene-copy { display: grid; grid-template-columns: auto 1fr; gap: 22px; padding: 24px 4px 4px; }
     .scene-number { color: var(--blue-bright); font-family: var(--mono); font-size: 0.68rem; letter-spacing: 0.12em; }
-    .scene-copy h3 { margin: 0 0 7px; font-family: var(--display); font-size: clamp(1.45rem, 2.6vw, 2.8rem); letter-spacing: -0.035em; line-height: 1; }
+    .scene-copy h3 {
+      margin: 0 0 7px;
+      font-family: "Avenir Next", "Helvetica Neue", Arial, sans-serif;
+      font-size: clamp(1.3rem, 2.5vw, 2.7rem);
+      font-weight: 800;
+      font-stretch: semi-expanded;
+      letter-spacing: 0;
+      line-height: 0.98;
+      white-space: nowrap;
+    }
     .scene-copy p { max-width: 520px; margin: 0; color: var(--mist-dim); font-size: 0.88rem; }
-
-    .findings-section { background: var(--mist); color: #08141d; }
-    .findings-section .section-code { color: #075fb9; }
-    .findings-section .section-title { color: #071019; }
-    .findings-section .section-title .cn { color: #45606d; }
-
-    .finding-statement {
-      display: grid;
-      grid-template-columns: 0.95fr 1.05fr;
-      gap: clamp(40px, 8vw, 120px);
-      align-items: start;
-    }
-    .tradeoff {
-      margin: 0;
-      font-family: var(--display);
-      font-size: clamp(2.4rem, 5vw, 5.7rem);
-      font-weight: 900;
-      letter-spacing: -0.055em;
-      line-height: 0.92;
-      text-transform: uppercase;
-    }
-    .tradeoff span { color: #075fb9; }
-
-    .finding-list { display: grid; gap: 0; border-top: 1px solid rgba(7, 16, 25, 0.24); }
-    .finding-item { display: grid; grid-template-columns: 48px 1fr; gap: 18px; padding: 24px 0; border-bottom: 1px solid rgba(7, 16, 25, 0.24); }
-    .finding-item b { font-family: var(--mono); color: #075fb9; }
-    .finding-item h3 { margin: 0 0 7px; font-size: 1rem; }
-    .finding-item p { margin: 0; color: #45606d; font-size: 0.92rem; }
-
-    .implications {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 1px;
-      margin-top: clamp(65px, 9vw, 120px);
-      background: rgba(7, 16, 25, 0.2);
-      border: 1px solid rgba(7, 16, 25, 0.2);
-    }
-    .implication { min-height: 190px; padding: 28px; background: var(--mist); }
-    .implication small { font-family: var(--mono); color: #075fb9; letter-spacing: 0.1em; }
-    .implication h3 { margin: 34px 0 0; font-family: var(--display); font-size: clamp(1.45rem, 2.3vw, 2.3rem); line-height: 1; text-transform: uppercase; }
 
     .site-footer {
       position: relative;
@@ -617,19 +305,8 @@
       .hero-inner { width: 100%; }
       .hero h1 { font-size: clamp(3.6rem, 14.5vw, 7rem); }
       .section-head { grid-template-columns: 1fr; gap: 22px; }
-      .intro-grid, .finding-statement { grid-template-columns: 1fr; }
-      .study-strip { grid-template-columns: 1fr 1fr; }
-      .study-stat:nth-child(2) { border-right: 0; }
-      .study-stat:nth-child(-n+2) { border-bottom: 1px solid var(--line); }
-      .prototype-grid { grid-template-columns: 1fr; }
-      .timeline-split { display: none; }
-      .workflow { grid-template-columns: 1fr; }
-      .workflow-step { min-height: 0; border-right: 0; border-bottom: 1px solid var(--line); }
-      .workflow-step:last-child { border-bottom: 0; }
-      .workflow-step::after { top: auto; right: auto; bottom: -6px; left: 46px; transform: rotate(135deg); }
-      .workflow-step h3 { margin-top: 30px; }
-      .implications { grid-template-columns: 1fr; }
-      .implication { min-height: 150px; }
+      .scene-section .section-title { font-size: clamp(2.45rem, 9.5vw, 4.8rem); }
+      .scene-title-main { white-space: normal; }
       .scene-card { flex-basis: min(78vw, 600px); }
     }
 
@@ -639,16 +316,10 @@
       .hero-meta { display: grid; gap: 4px; }
       .hero-meta span + span::before { content: none; }
       .hero-video-frame { margin-top: 32px; }
-      .study-strip { grid-template-columns: 1fr; }
-      .study-stat { min-height: 120px; border-right: 0; border-bottom: 1px solid var(--line); }
-      .study-stat:last-child { border-bottom: 0; }
-      .condition-media { aspect-ratio: 4 / 3; }
-      .scene-tools { align-items: flex-end; }
-      .drag-hint { max-width: 165px; }
+      .scene-section .section-title { font-size: clamp(2.3rem, 11.5vw, 4rem); }
+      .scene-title-last { display: block; }
       .scene-card { flex-basis: 86vw; }
       .scene-copy { grid-template-columns: 1fr; gap: 8px; }
-      .scene-image .media-slot { right: 10px; bottom: 10px; }
-      .shared-pipeline { grid-template-columns: 1fr; }
       .footer-meta { display: grid; }
     }
 
@@ -664,14 +335,12 @@
     }
 
     @media (forced-colors: active) {
-      .hero-video-frame, .scene-nav button, .condition-card, .media-slot { border: 1px solid ButtonText; }
-      .page-progress { background: Highlight; }
+      .hero-video-frame { border: 1px solid ButtonText; }
     }
   </style>
 </head>
 <body>
   <a class="skip-link" href="#main">跳到主要内容</a>
-  <div class="page-progress" aria-hidden="true"></div>
 
   <section class="hero" id="top" aria-labelledby="page-title">
     <div class="hero-inner">
@@ -696,200 +365,62 @@
   </section>
 
   <main id="main">
-    <section class="section" id="research" aria-labelledby="research-title">
-      <div class="section-inner">
-        <header class="section-head reveal">
-          <div class="section-code">Research premise</div>
-          <h2 class="section-title" id="research-title">Identity as a bridge through time <span class="cn">以身份为媒介，缩短人与历史的心理距离</span></h2>
-        </header>
-
-        <div class="intro-grid reveal">
-          <p class="research-question">How does presenting a historical narrator as an <em>“ancestral digital self”</em> influence learners’ experiences and immediate learning outcomes?</p>
-          <div class="definition">
-            <p><strong>Ancestral Digital Self</strong> is an AI-generated pedagogical agent in prerecorded videos that mirrors the learner’s facial features and vocal timbre, representing a historically situated version of the self.</p>
-            <p>本研究将学习者的身份置入距今 3,000 多年的屋背岭文化叙事中，并与非自我教学代理进行对比。</p>
-          </div>
-        </div>
-
-        <div class="study-strip reveal" aria-label="研究概览">
-          <div class="study-stat"><b>N = 36</b><span>Participants aged 19–29<br>21 male / 15 female</span></div>
-          <div class="study-stat"><b>2</b><span>Counterbalanced conditions<br>within-subjects design</span></div>
-          <div class="study-stat"><b>3,000+</b><span>Years into Shenzhen’s<br>Wubeiling culture</span></div>
-          <div class="study-stat"><b>Fixed</b><span>Prerecorded AI-generated<br>narration videos</span></div>
-        </div>
-      </div>
-    </section>
-
-    <section class="section prototype-section" id="prototype" aria-labelledby="prototype-title">
-      <div class="timeline-split" aria-hidden="true"></div>
-      <div class="section-inner">
-        <header class="section-head reveal">
-          <div class="section-code">Two conditions</div>
-          <h2 class="section-title" id="prototype-title">One story, two narrators <span class="cn">相同历史叙事，两种数字人条件</span></h2>
-        </header>
-
-        <div class="prototype-grid">
-          <article class="condition-card reveal" data-condition="self">
-            <div class="condition-media">
-              <img class="agent-image" src="assets/digital-self.png" alt="论文材料中的 Digital Self 数字人讲述者">
-              <span class="media-slot">Video slot · 16:9</span>
-              <span class="scan-line" aria-hidden="true"></span>
-            </div>
-            <div class="condition-copy">
-              <span class="condition-kicker">Condition A / Identity mirrored</span>
-              <h3>Digital Self</h3>
-              <p>The narrator mirrors the participant’s facial features and cloned vocal timbre, placing a recognizable version of the self inside the historical narrative.</p>
-              <div class="condition-tags" aria-label="Digital Self 特征">
-                <span>Facial transfer</span><span>Cloned timbre</span><span>Personal identity</span>
-              </div>
-            </div>
-          </article>
-
-          <article class="condition-card reveal" data-condition="neutral">
-            <div class="condition-media">
-              <img class="agent-image" src="assets/neutral-agent.png" alt="论文材料中的 Neutral Agent 非自我数字人讲述者">
-              <span class="media-slot">Video slot · 16:9</span>
-              <span class="scan-line" aria-hidden="true"></span>
-            </div>
-            <div class="condition-copy">
-              <span class="condition-kicker">Condition B / Standardized agent</span>
-              <h3>Neutral Agent</h3>
-              <p>A standardized non-self female character uses expert-confirmed facial features from the Lingnan region and is produced through the same generation pipeline.</p>
-              <div class="condition-tags" aria-label="Neutral Agent 特征">
-                <span>Non-self</span><span>Standardized</span><span>Matched pipeline</span>
-              </div>
-            </div>
-          </article>
-        </div>
-
-        <div class="shared-pipeline reveal">
-          <b>Controlled comparison</b>
-          <span>Both conditions use matched content volume, consistent subtitles, audio standards, duration, and visual presentation.</span>
-        </div>
-      </div>
-    </section>
-
-    <section class="section" aria-labelledby="workflow-title">
-      <div class="section-inner">
-        <header class="section-head reveal">
-          <div class="section-code">Stimuli development</div>
-          <h2 class="section-title" id="workflow-title">From evidence to moving image <span class="cn">从考古资料到可控的一致性视频材料</span></h2>
-        </header>
-
-        <div class="workflow reveal">
-          <article class="workflow-step">
-            <span class="workflow-no">A / 01</span>
-            <h3>Visual asset creation</h3>
-            <p>Archaeological findings and first-hand research data inform animated Wubeiling daily-life scenes. The animated style avoids over-specifying uncertain facial features.</p>
-          </article>
-          <article class="workflow-step">
-            <span class="workflow-no">B / 02</span>
-            <h3>Avatar generation</h3>
-            <p>A frontal photograph and a 10–15 second fixed-script voice recording support facial transfer and voice cloning for the Digital Self condition.</p>
-          </article>
-          <article class="workflow-step">
-            <span class="workflow-no">C / 03</span>
-            <h3>Stimuli finalization</h3>
-            <p>Narrators are composited with narrative scenes and supporting historical references, then standardized for duration, subtitles, audio, and visual presentation.</p>
-          </article>
-        </div>
-      </div>
-    </section>
-
     <section class="section scene-section" id="scenes" aria-labelledby="scenes-title">
       <header class="section-head reveal">
-        <div class="section-code">Wubeiling life scenes</div>
-        <h2 class="section-title" id="scenes-title">Fragments of one day <span class="cn">拖拽时间带，浏览屋背岭人的日常生活场景</span></h2>
+        <div class="section-code">Experiment materials</div>
+        <h2 class="section-title" id="scenes-title"><span class="scene-title-main"><span class="scene-title-phrase">Wubeiling life</span> <span class="scene-title-last">scenes</span></span><span class="cn">实验视频使用的屋背岭生活场景素材</span></h2>
       </header>
-
-      <div class="scene-tools reveal">
-        <div class="drag-hint">Drag, swipe, or use the controls</div>
-        <div class="scene-nav">
-          <button class="scene-prev" type="button" aria-label="上一个生活场景" onclick="moveRail(-1)">←</button>
-          <span class="scene-index" aria-live="polite">01 / 05</span>
-          <button class="scene-next" type="button" aria-label="下一个生活场景" onclick="moveRail(1)">→</button>
-        </div>
-      </div>
 
       <div class="scene-rail" tabindex="0" role="region" aria-label="屋背岭生活场景横向滑动栏">
         <article class="scene-card">
           <div class="scene-image">
-            <img src="assets/scene-river.jpg" alt="A2 材料中的屋背岭河畔场景">
-            <span class="media-slot">Video 01 · slot</span>
+            <video class="scene-video" src="assets/1.mp4" autoplay muted loop playsinline preload="metadata" aria-hidden="true"></video>
           </div>
           <div class="scene-copy">
-            <span class="scene-number">01 / DAWN</span>
-            <div><h3>晨间 · 河畔渔猎</h3><p>Fishing with spears and nets weighted with stone sinkers appears in the supplied archaeological reference material.</p></div>
+            <span class="scene-number">01 / LAND</span>
+            <div><h3>Living Landscape</h3><p>屋背岭先民所处的生活与地理环境</p></div>
           </div>
         </article>
 
         <article class="scene-card">
           <div class="scene-image">
-            <img src="assets/scene-pottery.jpg" alt="A2 材料中的捡贝与陶器场景">
-            <span class="media-slot">Video 02 · slot</span>
+            <video class="scene-video" src="assets/2.mp4" autoplay muted loop playsinline preload="metadata" aria-hidden="true"></video>
           </div>
           <div class="scene-copy">
-            <span class="scene-number">02 / MORNING</span>
-            <div><h3>朝时 · 捡贝制陶</h3><p>The source material references sand-tempered pottery such as fu, guan, and dou, with cord, leaf-vein, cloud, and thunder patterns.</p></div>
+            <span class="scene-number">02 / FISH</span>
+            <div><h3>The Chief Fishing</h3><p>部落首领捕鱼的日常活动场景</p></div>
           </div>
         </article>
 
         <article class="scene-card">
           <div class="scene-image">
-            <img src="assets/scene-textile.jpg" alt="A2 材料中的割麻纺织场景">
-            <span class="media-slot">Video 03 · slot</span>
+            <video class="scene-video" src="assets/3.mp4" autoplay muted loop playsinline preload="metadata" aria-hidden="true"></video>
           </div>
           <div class="scene-copy">
-            <span class="scene-number">03 / AFTERNOON</span>
-            <div><h3>午后 · 割麻纺织</h3><p>Stone knives, soaking and processing hemp, pottery spindle whorls, drying thread, and simple looms structure the textile sequence.</p></div>
+            <span class="scene-number">03 / FIRE</span>
+            <div><h3>Cooking by Fire</h3><p>围绕炊火煮食的日常生活场景</p></div>
           </div>
         </article>
 
         <article class="scene-card">
           <div class="scene-image">
-            <img src="assets/scene-home.jpg" alt="A2 材料中的村落归家与进食场景">
-            <span class="media-slot">Video 04 · slot</span>
+            <video class="scene-video" src="assets/4.mp4" autoplay muted loop playsinline preload="metadata" aria-hidden="true"></video>
           </div>
           <div class="scene-copy">
-            <span class="scene-number">04 / DUSK</span>
-            <div><h3>日暮 · 归家吃饭</h3><p>A domestic scene closes the supplied storyboard’s day-long account of Wubeiling life.</p></div>
+            <span class="scene-number">04 / HEMP</span>
+            <div><h3>Drying Hemp</h3><p>将麻线铺开晾晒的日常劳作场景</p></div>
           </div>
         </article>
 
         <article class="scene-card">
           <div class="scene-image">
-            <img src="assets/scene-reserved.jpg" alt="A2 材料中的夜间村落画面，用作后续视频预留图">
-            <span class="media-slot">Video 05 · reserved</span>
+            <video class="scene-video" src="assets/5.mp4" autoplay muted loop playsinline preload="metadata" aria-hidden="true"></video>
           </div>
           <div class="scene-copy">
-            <span class="scene-number">05 / RESERVED</span>
-            <div><h3>待定 · 后续场景</h3><p>This fifth position is intentionally reserved for an additional life-scene video supplied later.</p></div>
+            <span class="scene-number">05 / WATER</span>
+            <div><h3>Fetching Water</h3><p>母亲与女儿共同打水的生活场景</p></div>
           </div>
         </article>
-      </div>
-    </section>
-
-    <section class="section findings-section" id="findings" aria-labelledby="findings-title">
-      <div class="section-inner">
-        <header class="section-head reveal">
-          <div class="section-code">Findings &amp; discussion</div>
-          <h2 class="section-title" id="findings-title">Experience and outcome diverge <span class="cn">沉浸体验增强，并不等于短期学习表现更好</span></h2>
-        </header>
-
-        <div class="finding-statement reveal">
-          <p class="tradeoff">A critical <span>trade-off</span> between identity-driven engagement and knowledge acquisition.</p>
-          <div class="finding-list">
-            <article class="finding-item"><b>+</b><div><h3>Closer and more immersed</h3><p>The Digital Self condition increased psychological closeness, agent perception, narrative transportation, and agent–user relatedness.</p></div></article>
-            <article class="finding-item"><b>±</b><div><h3>Familiar, motivating—and uncanny</h3><p>Self-similarity could encourage exploration and positive self-projection, while also causing discomfort and stronger uncanny responses.</p></div></article>
-            <article class="finding-item"><b>−</b><div><h3>No immediate learning advantage</h3><p>History retention was lower in the Digital Self condition; Remember / Know / Guess judgments showed no reliable differences.</p></div></article>
-          </div>
-        </div>
-
-        <div class="implications reveal" aria-label="论文提出的三项设计策略">
-          <article class="implication"><small>DESIGN STRATEGY / 01</small><h3>Adaptation phase</h3></article>
-          <article class="implication"><small>DESIGN STRATEGY / 02</small><h3>Selective presence</h3></article>
-          <article class="implication"><small>DESIGN STRATEGY / 03</small><h3>Stylized abstraction</h3></article>
-        </div>
       </div>
     </section>
   </main>
@@ -897,12 +428,11 @@
   <footer class="site-footer">
     <div class="footer-inner">
       <p class="eyebrow">Paper &amp; prototype materials</p>
-      <h2 class="footer-title">Welcome into the Wubeiling culture—into our story.</h2>
+      <h2 class="footer-title">Welcome into the Wubeiling culture — into our story.</h2>
       <p class="footer-authors">Duo Gong*, Fan Sun*, Yucen Wang, Yufan Hu, Wen Zhong, Wei Zhang, Pengcheng An† · Southern University of Science and Technology · Shenzhen University</p>
       <div class="footer-meta">
-        <span>UbiComp Companion ’26 · October 11–15, 2026 · Shanghai, China</span>
+        <span>UbiComp / ISWC ’26 · October 11–15, 2026 · Shanghai, China</span>
         <a href="https://doi.org/10.1145/3798063.3837177">doi:10.1145/3798063.3837177</a>
-        <span>* Equal contribution · † Corresponding author</span>
       </div>
     </div>
   </footer>
@@ -910,11 +440,15 @@
   <script>
     const rail = document.querySelector('.scene-rail');
     const cards = [...rail.querySelectorAll('.scene-card')];
-    const prevButton = document.querySelector('.scene-prev');
-    const nextButton = document.querySelector('.scene-next');
-    const sceneIndex = document.querySelector('.scene-index');
-    const progress = document.querySelector('.page-progress');
+    const sceneVideos = [...rail.querySelectorAll('.scene-video')];
     const reduceMotion = matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    if (reduceMotion) {
+      sceneVideos.forEach((video) => {
+        video.autoplay = false;
+        video.pause();
+      });
+    }
 
     let pointerId = null;
     let startX = 0;
@@ -939,13 +473,6 @@
         }
       });
       return nearest;
-    }
-
-    function updateRailControls() {
-      const maxScroll = rail.scrollWidth - rail.clientWidth;
-      prevButton.disabled = rail.scrollLeft <= 3;
-      nextButton.disabled = rail.scrollLeft >= maxScroll - 3;
-      sceneIndex.textContent = `${String(currentCardIndex() + 1).padStart(2, '0')} / ${String(cards.length).padStart(2, '0')}`;
     }
 
     function moveRail(direction) {
@@ -990,24 +517,6 @@
     rail.addEventListener('pointerup', endDrag);
     rail.addEventListener('pointercancel', endDrag);
 
-    let railFrame = 0;
-    rail.addEventListener('scroll', () => {
-      cancelAnimationFrame(railFrame);
-      railFrame = requestAnimationFrame(updateRailControls);
-    }, { passive: true });
-
-    function updatePageProgress() {
-      const distance = document.documentElement.scrollHeight - innerHeight;
-      const ratio = distance > 0 ? scrollY / distance : 0;
-      progress.style.width = `${Math.min(100, Math.max(0, ratio * 100))}%`;
-    }
-
-    let pageFrame = 0;
-    addEventListener('scroll', () => {
-      cancelAnimationFrame(pageFrame);
-      pageFrame = requestAnimationFrame(updatePageProgress);
-    }, { passive: true });
-
     if ('IntersectionObserver' in window && !reduceMotion) {
       const observer = new IntersectionObserver((entries) => {
         entries.forEach((entry) => {
@@ -1021,10 +530,6 @@
     } else {
       document.querySelectorAll('.reveal').forEach((element) => element.classList.add('is-visible'));
     }
-
-    addEventListener('resize', updateRailControls);
-    updateRailControls();
-    updatePageProgress();
   </script>
 </body>
 </html>

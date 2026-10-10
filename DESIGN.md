@@ -2,7 +2,7 @@
 
 ## North Star
 
-Build a conference-floor research exhibit: visitors should understand the paper's central comparison in under a minute, then explore the prototype and Wubeiling life scenes without instruction.
+Build a QR-first material viewer for conference conversations: visitors should understand the project through its overview film, then browse the Wubeiling scene materials without reading a condensed version of the paper.
 
 ## Visual register
 
@@ -15,24 +15,25 @@ Build a conference-floor research exhibit: visitors should understand the paper'
 
 Typography uses a sharp condensed display stack for English titles, a highly legible Chinese system stack for body copy, and a compact monospaced utility stack for labels and measurements. The page is dark, cinematic, and precise—never faux-ancient, ornamental, or mystical at the expense of research clarity.
 
+Scene-card English titles use Arial with a natural-proportion, slightly wide and bold display treatment, and remain on one line at every supported width; their responsive size contracts before the text can wrap.
+
+Long English headings stay intact on wide screens and use controlled phrase-level wrapping on narrow screens, avoiding isolated words and three-line title stacks.
+
 ## Layout signature
 
-The opening is a direct research-film title sequence: the paper title and metadata lead immediately into the full-width main film, without global navigation or a photographic hero. Below it, a continuous vertical "time coordinate" encodes the journey from the present-day research question to the 3,000-year-old Wubeiling scenes. At the prototype section, the coordinate splits into Digital Self and Neutral Agent branches. The final scene rail behaves like a strip of recovered moving fragments.
+The opening is a direct research-film title sequence: the paper title and metadata lead immediately into the full-width overview film, without global navigation, a photographic hero, or decorative progress indicators. The material path is deliberately short: overview film followed directly by a horizontal strip of Wubeiling life-scene fragments.
 
 ## Interaction contract
 
 - All primary interactions use native buttons or links with hover, active, and visible focus states.
 - The main film uses YouTube's privacy-enhanced embedded player, preserves keyboard-accessible controls, and does not autoplay.
-- The scene rail supports pointer drag, touch swipe, trackpad scroll, keyboard focus, and previous/next buttons.
-- Video placeholders preserve 16:9 geometry so later media insertion causes no layout shift.
-- Reduced-motion users receive an immediate, static presentation.
-- Copy is sourced only from the supplied paper, Poster, and A2 materials. Unavailable videos remain explicitly labeled as placeholders.
+- The scene rail supports pointer drag, touch swipe, trackpad scroll, and keyboard navigation without adding visible instructional controls.
+- The five Wubeiling scene videos preserve 16:9 geometry and autoplay silently in a continuous inline loop.
+- Reduced-motion users receive an immediate, static presentation with scene autoplay paused.
+- Copy is sourced only from the supplied paper, Poster, and A2 materials.
 
 ## Content hierarchy
 
-1. Research title, authors, venue, and research question.
-2. Short definition and grounded study overview.
-3. Side-by-side prototype conditions.
-4. Stimuli development workflow.
-5. Wubeiling daily-life scene rail.
-6. Findings, design implications, and paper metadata.
+1. Research title, authors, venue, and overview film.
+2. Wubeiling daily-life scene rail.
+3. Compact paper metadata, authors, venue, and DOI footer.
