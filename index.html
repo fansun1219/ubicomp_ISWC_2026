@@ -237,10 +237,14 @@
       scroll-snap-type: x mandatory;
       scrollbar-gutter: stable;
       cursor: grab;
-      touch-action: pan-y;
+      touch-action: pan-x pan-y;
       user-select: none;
     }
-    .scene-rail.is-dragging { cursor: grabbing; scroll-snap-type: none; }
+    .scene-rail.is-dragging {
+      cursor: grabbing;
+      scroll-behavior: auto;
+      scroll-snap-type: none;
+    }
 
     .scene-card {
       position: relative;
@@ -354,11 +358,12 @@
       <div class="hero-video-frame">
         <iframe
           class="hero-video"
-          src="https://www.youtube-nocookie.com/embed/mUbXBqEuV0Q?rel=0"
+          src="https://player.bilibili.com/player.html?bvid=BV1E9pJ67Eag&amp;autoplay=0&amp;danmaku=0"
           title="Mirroring the Past 论文整体展示视频"
           loading="lazy"
           referrerpolicy="strict-origin-when-cross-origin"
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          sandbox="allow-scripts allow-same-origin allow-presentation"
+          allow="autoplay; fullscreen; picture-in-picture"
           allowfullscreen></iframe>
       </div>
     </div>
@@ -397,7 +402,7 @@
             <video class="scene-video" src="assets/3.mp4" autoplay muted loop playsinline preload="metadata" aria-hidden="true"></video>
           </div>
           <div class="scene-copy">
-            <span class="scene-number">03 / FIRE</span>
+            <span class="scene-number">03 / COOK</span>
             <div><h3>Cooking by Fire</h3><p>围绕炊火煮食的日常生活场景</p></div>
           </div>
         </article>
@@ -407,7 +412,7 @@
             <video class="scene-video" src="assets/4.mp4" autoplay muted loop playsinline preload="metadata" aria-hidden="true"></video>
           </div>
           <div class="scene-copy">
-            <span class="scene-number">04 / HEMP</span>
+            <span class="scene-number">04 / WORK</span>
             <div><h3>Drying Hemp</h3><p>将麻线铺开晾晒的日常劳作场景</p></div>
           </div>
         </article>
@@ -417,7 +422,7 @@
             <video class="scene-video" src="assets/5.mp4" autoplay muted loop playsinline preload="metadata" aria-hidden="true"></video>
           </div>
           <div class="scene-copy">
-            <span class="scene-number">05 / WATER</span>
+            <span class="scene-number">05 / FAMILY</span>
             <div><h3>Fetching Water</h3><p>母亲与女儿共同打水的生活场景</p></div>
           </div>
         </article>
@@ -487,20 +492,24 @@
     });
 
     rail.addEventListener('pointerdown', (event) => {
-      if (event.pointerType === 'mouse' && event.button !== 0) return;
+      if (event.pointerType !== 'mouse' || event.button !== 0) return;
       pointerId = event.pointerId;
       startX = event.clientX;
       startScroll = rail.scrollLeft;
       moved = false;
       rail.setPointerCapture(pointerId);
       rail.classList.add('is-dragging');
+      event.preventDefault();
     });
 
     rail.addEventListener('pointermove', (event) => {
       if (event.pointerId !== pointerId) return;
       const delta = event.clientX - startX;
       if (Math.abs(delta) > 4) moved = true;
-      if (moved) rail.scrollLeft = startScroll - delta;
+      if (moved) {
+        event.preventDefault();
+        rail.scrollLeft = startScroll - delta;
+      }
     });
 
     function endDrag(event) {

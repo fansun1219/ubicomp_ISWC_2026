@@ -26,7 +26,7 @@ The opening is a direct research-film title sequence: the paper title and metada
 ## Interaction contract
 
 - All primary interactions use native buttons or links with hover, active, and visible focus states.
-- The main film uses YouTube's privacy-enhanced embedded player, preserves keyboard-accessible controls, and does not autoplay.
+- The main film uses Bilibili's embedded player, preserves keyboard-accessible controls, starts with danmaku disabled, does not autoplay, and prevents the player from opening external pages.
 - The scene rail supports pointer drag, touch swipe, trackpad scroll, and keyboard navigation without adding visible instructional controls.
 - The five Wubeiling scene videos preserve 16:9 geometry and autoplay silently in a continuous inline loop.
 - Reduced-motion users receive an immediate, static presentation with scene autoplay paused.
